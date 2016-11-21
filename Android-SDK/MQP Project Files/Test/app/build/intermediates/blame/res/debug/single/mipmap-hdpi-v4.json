@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Android\\MQP\\Android-SDK\\Examples\\ProximityContent\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\MQP\\Android-SDK\\Examples\\ProximityContent\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\Test\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\Test\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    }
+]

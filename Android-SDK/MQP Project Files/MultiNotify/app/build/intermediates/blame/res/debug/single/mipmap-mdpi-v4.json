@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Android\\MQP\\Android-SDK\\Examples\\Notification\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\MQP\\Android-SDK\\Examples\\Notification\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\MultiNotify\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\MultiNotify\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    }
+]
