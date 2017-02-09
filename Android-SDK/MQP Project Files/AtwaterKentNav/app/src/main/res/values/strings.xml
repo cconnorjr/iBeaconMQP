@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AtwaterKentNav</string>
+
+    <string name="https_www_wpi_edu_people_faculty_drb">https://www.wpi.edu/people/faculty/drb</string>
+    <string name="_313">313</string>
+    <string name="donald_brown">Donald Brown</string>
+    <string name="stephen_bitar">Stephen Bitar</string>
+    <string name="_312">312</string>
+    <string name="url">URL</string>
+    <string name="room_number">Room Number</string>
+    <string name="professor_name">Professor Name</string>
+    <string name="https_www_wpi_edu_people_faculty_sjbitar">https://www.wpi.edu/people/faculty/sjbitar</string>
+    <string name="action_zoom_in">Demo zoom in</string>
+    <string name="action_zoom_out">Demo zoom out</string>
+    <string name="action_pan_left">Demo pan left</string>
+    <string name="action_pan_right">Demo pan right</string>
+    <string name="action_pan_up">Demo pan up</string>
+    <string name="action_pan_down">Demo pan down</string>
+</resources>
