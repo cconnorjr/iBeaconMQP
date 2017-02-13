@@ -135,6 +135,11 @@ public class MapView extends View {
     private EdgeEffectCompat mEdgeEffectLeft;
     private EdgeEffectCompat mEdgeEffectRight;
 
+    private boolean mEdgeEffectTopActive;
+    private boolean mEdgeEffectBottomActive;
+    private boolean mEdgeEffectLeftActive;
+    private boolean mEdgeEffectRightActive;
+
     // Buffers used during drawing. These are defined as fields to avoid allocation during
     // draw calls.
     private Point mSurfaceSizeBuffer = new Point();
