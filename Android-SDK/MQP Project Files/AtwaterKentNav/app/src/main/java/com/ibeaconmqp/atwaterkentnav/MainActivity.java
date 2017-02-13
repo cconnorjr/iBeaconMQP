@@ -40,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        akMapView = (MapView) findViewById(R.id.map);
+        //setContentView(R.layout.activity_main);
+
+        TouchImageView img = new TouchImageView(this);
+        img.setImageResource(R.drawable.akmap);
+        img.setMaxZoom(4f);
+        setContentView(img);
 
         //init();
 
