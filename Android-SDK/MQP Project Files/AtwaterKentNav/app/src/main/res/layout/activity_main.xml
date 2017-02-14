@@ -7,15 +7,21 @@
     android:layout_height="match_parent"
     tools:context="com.ibeaconmqp.atwaterkentnav.MainActivity">
 
-    <com.ibeaconmqp.atwaterkentnav.TouchImageView
+    <!--<com.ibeaconmqp.atwaterkentnav.TouchImageView
         android:id="@+id/map"
+        android:src="@drawable/akmap"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+-->
 
-
+    <TextView
+        android:id="@+id/math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 
 </RelativeLayout>

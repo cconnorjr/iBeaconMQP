@@ -1,37 +1,13 @@
-package com.ibeaconmqp.atwaterkentnav;
-
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
-
 import org.ejml.ops.CommonOps;
 import org.ejml.ops.NormOps;
 import org.ejml.simple.*;
 import org.ejml.ops.CommonOps.*;
 import org.ejml.ops.NormOps.*;
+import sun.java2d.pipe.SpanShapeRenderer;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
+public class Main {
 
-public class MainActivity extends AppCompatActivity {
-
-    private MapView akMapView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //this.setTitle(R.string.instructions);
-
-        setContentView(R.layout.activity_main);
-
-        /*TouchImageView img = new TouchImageView(this);
-        img.setImageResource(R.drawable.akmap);
-        img.setMaxZoom(4f);
-        setContentView(img);*/
-
+    public static void main(String[] args) {
 
         //array of Beacon objects
         Beacon[] beacons = new Beacon[3]; //set the size to 3 at first
@@ -47,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         beacons[1] = beacon2;
         beacons[2] = beacon3;
 
-        //set initial guess
+        //set intial guess
         double guessX = 2;
         double guessY = 2;
         double[][] station = new double[][]{{ guessX, guessY }};
@@ -97,49 +73,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(matStation);
             estimationError = matrixError.elementSum();
         }
-
-        TextView distance = (TextView)findViewById(R.id.math);
-        distance.setText(matStation.toString());
-        //init();
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_zoom_in:
-                akMapView.zoomIn();
-                return true;
-
-            case R.id.action_zoom_out:
-                akMapView.zoomOut();
-                return true;
-
-            case R.id.action_pan_left:
-                akMapView.panLeft();
-                return true;
-
-            case R.id.action_pan_right:
-                akMapView.panRight();
-                return true;
-
-            case R.id.action_pan_up:
-                akMapView.panUp();
-                return true;
-
-            case R.id.action_pan_down:
-                akMapView.panDown();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     //coordinate 1: x1, y1; coordinate 2: x2, y2
@@ -147,29 +80,4 @@ public class MainActivity extends AppCompatActivity {
         double d = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
         return d;
     }
-
-    //Method to change screens when a button is clicked
-    /*private void init(){
-        but1 = (Button)findViewById(R.id.but1);
-        but1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextScreen = new Intent(MainActivity.this, ProfessorTableActivity.class);
-                startActivity(nextScreen);
-            }
-        });
-
-        but2 = (Button)findViewById(R.id.but2);
-        but2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextScreen = new Intent(MainActivity.this, ProfessorTableActivity.class);
-                startActivity(nextScreen);
-            }
-        });
-    }*/
-
-
-
-
 }
