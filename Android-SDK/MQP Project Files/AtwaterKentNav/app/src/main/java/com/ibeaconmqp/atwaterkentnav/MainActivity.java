@@ -3,9 +3,10 @@ package com.ibeaconmqp.atwaterkentnav;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.Layout;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 
 import org.ejml.ops.CommonOps;
 import org.ejml.ops.NormOps;
@@ -16,9 +17,12 @@ import org.ejml.ops.NormOps.*;
 import java.io.FileDescriptor;
 import java.io.IOException;
 
+import static java.lang.Math.abs;
+
 public class MainActivity extends AppCompatActivity {
 
-    private MapView akMapView;
+    Button userLocation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        /*TouchImageView img = new TouchImageView(this);
+        /*img = new TouchImageView(this);
         img.setImageResource(R.drawable.akmap);
         img.setMaxZoom(4f);
         setContentView(img);*/
-
-
-        //array of Beacon objects
         Beacon[] beacons = new Beacon[3]; //set the size to 3 at first
         int numBeacons = beacons.length;
 
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         Beacon beacon1 = new Beacon(10, 10);
         Beacon beacon2 = new Beacon(0, 15);
         Beacon beacon3 = new Beacon(-5, 5);
+
+
+        //array of Beacon objects
 
         //add Beacons to array
         beacons[0] = beacon1;
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             Beacon thisBeacon = beacons[i];
 //            double d = getDistance(thisBeacon.getX(), thisBeacon.getY(), guessX, guessY);
             double d = distances[i];
-            double f = Math.abs(Math.pow(thisBeacon.getX() - guessX, 2) + Math.pow(thisBeacon.getY() - guessY, 2) - Math.pow(d, 2));
+            double f = abs(Math.pow(thisBeacon.getX() - guessX, 2) + Math.pow(thisBeacon.getY() - guessY, 2) - Math.pow(d, 2));
             estimationError = estimationError + f;
         }
 
@@ -99,48 +103,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView distance = (TextView)findViewById(R.id.math);
-        distance.setText(matStation.toString());
+        distance.setText(Integer.toString((int)abs(matStation.get(0,0)*100)) + " ,  " +
+        Integer.toString((int)abs(matStation.get(0,1)*100)));
+
+        userLocation = (Button)findViewById(R.id.userLocation);
+        userLocation.setX((int)abs(matStation.get(0,0)*350));
+        userLocation.setY((int)abs(matStation.get(0,1)*200));
+
         //init();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_zoom_in:
-                akMapView.zoomIn();
-                return true;
-
-            case R.id.action_zoom_out:
-                akMapView.zoomOut();
-                return true;
-
-            case R.id.action_pan_left:
-                akMapView.panLeft();
-                return true;
-
-            case R.id.action_pan_right:
-                akMapView.panRight();
-                return true;
-
-            case R.id.action_pan_up:
-                akMapView.panUp();
-                return true;
-
-            case R.id.action_pan_down:
-                akMapView.panDown();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     //coordinate 1: x1, y1; coordinate 2: x2, y2
     public static double getDistance(int x1, int y1, int x2, int y2) {

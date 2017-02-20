@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.ibeaconmqp.atwaterkentnav.MainActivity">
 
-    <!--<com.ibeaconmqp.atwaterkentnav.TouchImageView
+    <com.ibeaconmqp.atwaterkentnav.TouchImageView
         android:id="@+id/map"
         android:src="@drawable/akmap"
         android:layout_width="match_parent"
@@ -15,13 +15,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
--->
+
+
 
     <TextView
         android:id="@+id/math"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/map"
         />
+
+    <Button
+        android:id="@+id/userLocation"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        style="@style/Widget.AppCompat.Button.Small"/>
 
 
 </RelativeLayout>
