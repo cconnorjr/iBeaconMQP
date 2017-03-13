@@ -1,10 +1,6 @@
 [
     {
-        "merged": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\Test\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "D:\\Android\\MQP\\Android-SDK\\MQP Project Files\\Test\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.0\\res\\layout-sw600dp\\design_layout_snackbar.xml"
-    },
-    {
-        "merged": "D:\\Android\\MQP\\Android-SDK\\Examples\\ProximityContent\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "D:\\Android\\MQP\\Android-SDK\\Examples\\ProximityContent\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.0\\res\\layout-sw600dp\\design_layout_snackbar.xml"
+        "merged": "C:\\Github\\iBeaconMQP\\Android-SDK\\MQP Project Files\\Test\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "C:\\Github\\iBeaconMQP\\Android-SDK\\MQP Project Files\\Test\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.0\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     }
 ]

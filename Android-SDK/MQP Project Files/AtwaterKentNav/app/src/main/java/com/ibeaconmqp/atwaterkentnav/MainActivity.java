@@ -5,8 +5,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+
+import com.estimote.sdk.Utils;
+import com.estimote.sdk.SystemRequirementsChecker;
+import com.estimote.sdk.cloud.model.Color;
+
+import com.estimote.sdk.Beacon;
+import com.estimote.sdk.BeaconManager;
+import com.estimote.sdk.Region;
 
 import org.ejml.ops.CommonOps;
 import org.ejml.ops.NormOps;
@@ -16,13 +26,20 @@ import org.ejml.ops.NormOps.*;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 import static java.lang.Math.abs;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button userLocation;
+    private Button userLocation;
+    //distances to the beacons
 
+    private double distance1,distance2,distance3;
+
+    private BeaconManager beaconManager;
+    private Region region;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,84 +48,235 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        /*img = new TouchImageView(this);
-        img.setImageResource(R.drawable.akmap);
-        img.setMaxZoom(4f);
-        setContentView(img);*/
-        Beacon[] beacons = new Beacon[3]; //set the size to 3 at first
-        int numBeacons = beacons.length;
+        beaconManager = new BeaconManager(this);
+        beaconManager.setRangingListener(new BeaconManager.RangingListener() {
+            @Override
+            public void onBeaconsDiscovered(Region region, List<Beacon> list) {
+                String text;
+                Beacon firstBeacon, secondBeacon, thirdBeacon;
+                //Only one beacon in range
+                if (list.size()==1) {
+                    firstBeacon = list.get(0);
+                    distance1 = Utils.computeAccuracy(firstBeacon);
 
-        //create Beacons
-        Beacon beacon1 = new Beacon(10, 10);
-        Beacon beacon2 = new Beacon(0, 15);
-        Beacon beacon3 = new Beacon(-5, 5);
-
-
-        //array of Beacon objects
-
-        //add Beacons to array
-        beacons[0] = beacon1;
-        beacons[1] = beacon2;
-        beacons[2] = beacon3;
-
-        //set initial guess
-        double guessX = 2;
-        double guessY = 2;
-        double[][] station = new double[][]{{ guessX, guessY }};
-        SimpleMatrix matStation = new SimpleMatrix(station);
-        double[][] mo = new double[][]{{ -1.0, -1.0}};
-        SimpleMatrix minusOne = new SimpleMatrix(mo);
-
-        //calculate the estimation error
-        double estimationError = 0;
-        double[] distances = {15,16,5};
-        for (int i=0; i<numBeacons; i++) {
-            Beacon thisBeacon = beacons[i];
-//            double d = getDistance(thisBeacon.getX(), thisBeacon.getY(), guessX, guessY);
-            double d = distances[i];
-            double f = abs(Math.pow(thisBeacon.getX() - guessX, 2) + Math.pow(thisBeacon.getY() - guessY, 2) - Math.pow(d, 2));
-            estimationError = estimationError + f;
-        }
-
-        //create a Jacobian matrix of size [number_of_beacons][2]
-        double[][] jacobianMatrix = new double[numBeacons][2];
-        double[][] matF = new double[numBeacons][1];
-        while (estimationError > 0.01){
-            //for loop happens here
-            //the condition for, for loop ->
-            for (int i=0; i<numBeacons; i++){ //3 is the number of beacons
-                //we calculate the jacobian matrix here
-                Beacon b = beacons[i];
-                for (int j=0; j<2; j++){
-                    if (j==0){
-                        jacobianMatrix[i][j] = -2*(b.getX()-guessX);
-                    }
-                    else {
-                        jacobianMatrix[i][j] = -2 * (b.getY() - guessY);
-                    }
+                    text = (Double.toString((double)Math.round(distance1 * 100d) / 100d) + " Only 1 beacon in range");
                 }
-                matF[i][0] = Math.pow(b.getX() - guessX, 2) + Math.pow(b.getY() - guessY, 2) - Math.pow(distances[i], 2);
+
+                else if(list.size()==2){
+                    firstBeacon = list.get(0);
+                    distance1 = Utils.computeAccuracy(firstBeacon);
+
+                    secondBeacon = list.get(1);
+                    distance2 = Utils.computeAccuracy(secondBeacon);
+
+                    text = (Double.toString((double)Math.round(distance1 * 100d) / 100d) + ", " +
+                            Double.toString((double)Math.round(distance2 * 100d) / 100d) + " Only 2 beacons in range.");
+                }
+
+                else if(list.size()>=3){
+                    firstBeacon = list.get(0);
+                    distance1 = Utils.computeAccuracy(firstBeacon);
+
+                    secondBeacon = list.get(1);
+                    distance2 = Utils.computeAccuracy(secondBeacon);
+
+                    thirdBeacon = list.get(2);
+                    distance3 = Utils.computeAccuracy(thirdBeacon);
+
+                    //***************Start LMS Functionality*****************************
+                    LMSBeacon[] beacons = new LMSBeacon[3]; //set the size to 3 at first
+                    int numBeacons = beacons.length;
+
+                    //create Beacons
+                    LMSBeacon beacon1 = new LMSBeacon(0, 0);//Set this as candy with major 20303
+                    LMSBeacon beacon2 = new LMSBeacon(-5, 0);//Set this as beetroot with 8897
+                    LMSBeacon beacon3 = new LMSBeacon(-5, -5);//Set this as lemon with 61665
+
+
+                    //array of LMSBeacon objects
+
+                    //add Beacons to array, based on Major and Minor
+                    //First closest Beacon
+                    if(firstBeacon.getMajor()== 20303)
+                        beacons[0] = beacon1;
+                    else if(firstBeacon.getMajor()== 8897)
+                        beacons[0] = beacon2;
+                    else if(firstBeacon.getMajor()== 61665)
+                        beacons[0] = beacon3;
+
+                    //Second closest Beacon
+                    if(secondBeacon.getMajor()== 20303)
+                        beacons[1] = beacon1;
+                    else if(secondBeacon.getMajor()== 8897)
+                        beacons[1] = beacon2;
+                    else if(secondBeacon.getMajor()== 61665)
+                        beacons[1] = beacon3;
+
+                    //Third closest beacon
+                    if(thirdBeacon.getMajor()== 20303)
+                        beacons[2] = beacon1;
+                    else if(thirdBeacon.getMajor()== 8897)
+                        beacons[2] = beacon2;
+                    else if(thirdBeacon.getMajor()== 61665)
+                        beacons[2] = beacon3;
+
+                    //set initial guess
+                    double guessX = 2;
+                    double guessY = 2;
+                    double[][] station = new double[][]{{ guessX, guessY }};
+                    SimpleMatrix matStation = new SimpleMatrix(station);
+                    double[][] mo = new double[][]{{ -1.0, -1.0}};
+                    SimpleMatrix minusOne = new SimpleMatrix(mo);
+
+                    //calculate the estimation error
+                    double estimationError = 0;
+                    double[] distances = {distance1,distance2,distance3};
+                    for (int i=0; i<numBeacons; i++) {
+                        LMSBeacon thisBeacon = beacons[i];
+                        //double d = getDistance(thisBeacon.getX(), thisBeacon.getY(), guessX, guessY);
+                        double d = distances[i];
+                        double f = abs(Math.pow(thisBeacon.getX() - guessX, 2) + Math.pow(thisBeacon.getY() - guessY, 2) - Math.pow(d, 2));
+                        estimationError = estimationError + f;
+                    }
+
+                    //create a Jacobian matrix of size [number_of_beacons][2]
+                    double[][] jacobianMatrix = new double[numBeacons][2];
+                    double[][] matF = new double[numBeacons][1];
+                    while (estimationError > 0.01){
+                        //for loop happens here
+                        //the condition for, for loop ->
+                        for (int i=0; i<numBeacons; i++){ //3 is the number of beacons
+                            //we calculate the jacobian matrix here
+                            LMSBeacon b = beacons[i];
+                            for (int j=0; j<2; j++){
+                                if (j==0){
+                                    jacobianMatrix[i][j] = -2*(b.getX()-guessX);
+                                }
+                                else {
+                                    jacobianMatrix[i][j] = -2 * (b.getY() - guessY);
+                                }
+                            }
+                            matF[i][0] = Math.pow(b.getX() - guessX, 2) + Math.pow(b.getY() - guessY, 2) - Math.pow(distances[i], 2);
+                        }
+                        SimpleMatrix matrixJacobian = new SimpleMatrix(jacobianMatrix);
+                        SimpleMatrix matrixF = new SimpleMatrix(matF);
+                        //here goes the matrix inverse operation
+                        // estimationError = -inv(jacobianMatrix' * jacobianMatrix) * (jacobianMatrix') * F'
+                        SimpleMatrix first = (matrixJacobian.transpose().mult(matrixJacobian)).invert();
+                        SimpleMatrix second = (matrixJacobian.transpose().mult(matrixF));
+                        SimpleMatrix matrixError = first.mult(second);
+                        matrixError = matrixError.negative();
+                        matStation = matStation.plus(matrixError.transpose());
+                        estimationError = matrixError.elementSum();
+                    }
+
+                    text = (Double.toString((double)Math.round(distance1 * 100d) / 100d)+ ", " +
+                            Double.toString((double)Math.round(distance2 * 100d) / 100d)+ ", " +
+                            Double.toString((double)Math.round(distance3 * 100d) / 100d));
+
+
+                    userLocation = (Button)findViewById(R.id.userLocation);
+                    userLocation.setX((int)abs(matStation.get(0,0)*100)+300);
+                    userLocation.setY((int)abs(matStation.get(0,1)*100)+300);
+                    ((TextView) findViewById(R.id.textView)).setText(text);
+
+
+                    TextView distance = (TextView)findViewById(R.id.math);
+                    distance.setText(Double.toString(matStation.get(0,0)) + " ,  " +
+                            Double.toString(matStation.get(0,1)));
+                }
+
+                else {
+                    text = "No beacons in range.";
+                }
+
+
+                //((TextView) findViewById(R.id.distances)).setText(Double.toString(distance1));
+
             }
-            SimpleMatrix matrixJacobian = new SimpleMatrix(jacobianMatrix);
-            SimpleMatrix matrixF = new SimpleMatrix(matF);
-            //here goes the matrix inverse operation
-            // estimationError = -inv(jacobianMatrix' * jacobianMatrix) * (jacobianMatrix') * F'
-            SimpleMatrix first = (matrixJacobian.transpose().mult(matrixJacobian)).invert();
-            SimpleMatrix second = (matrixJacobian.transpose().mult(matrixF));
-            SimpleMatrix matrixError = first.mult(second);
-            matrixError = matrixError.negative();
-            matStation = matStation.plus(matrixError.transpose());
-            System.out.println(matStation);
-            estimationError = matrixError.elementSum();
-        }
+        });
+        region = new Region("ranged region", UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), null, null);
 
-        TextView distance = (TextView)findViewById(R.id.math);
-        distance.setText(Integer.toString((int)abs(matStation.get(0,0)*100)) + " ,  " +
-        Integer.toString((int)abs(matStation.get(0,1)*100)));
+        //Set the locations of each of the beacons, moving left to right and top to bottom
+        Button beacon1 = (Button)findViewById(R.id.beacon1);
+        beacon1.setX(200);
+        beacon1.setY(410);
 
-        userLocation = (Button)findViewById(R.id.userLocation);
-        userLocation.setX((int)abs(matStation.get(0,0)*350));
-        userLocation.setY((int)abs(matStation.get(0,1)*200));
+        Button beacon2 = (Button)findViewById(R.id.beacon2);
+        beacon2.setX(295);
+        beacon2.setY(385);
+
+        Button beacon3 = (Button)findViewById(R.id.beacon3);
+        beacon3.setX(360);
+        beacon3.setY(160);
+
+        Button beacon4 = (Button)findViewById(R.id.beacon4);
+        beacon4.setX(360);
+        beacon4.setY(400);
+
+        Button beacon5 = (Button)findViewById(R.id.beacon5);
+        beacon5.setX(370);
+        beacon5.setY(230);
+
+        Button beacon6 = (Button)findViewById(R.id.beacon6);
+        beacon6.setX(370);
+        beacon6.setY(320);
+
+        Button beacon7 = (Button)findViewById(R.id.beacon7);
+        beacon7.setX(420);
+        beacon7.setY(275);
+
+        Button beacon8 = (Button)findViewById(R.id.beacon8);
+        beacon8.setX(470);
+        beacon8.setY(170);
+
+        Button beacon9 = (Button)findViewById(R.id.beacon9);
+        beacon9.setX(470);
+        beacon9.setY(410);
+
+        Button beacon10 = (Button)findViewById(R.id.beacon10);
+        beacon10.setX(520);
+        beacon10.setY(190);
+
+        Button beacon11 = (Button)findViewById(R.id.beacon11);
+        beacon11.setX(520);
+        beacon11.setY(390);
+
+        Button beacon12 = (Button)findViewById(R.id.beacon12);
+        beacon12.setX(570);
+        beacon12.setY(170);
+
+        Button beacon13 = (Button)findViewById(R.id.beacon13);
+        beacon13.setX(570);
+        beacon13.setY(410);
+
+        Button beacon14 = (Button)findViewById(R.id.beacon14);
+        beacon14.setX(670);
+        beacon14.setY(230);
+
+        Button beacon15 = (Button)findViewById(R.id.beacon15);
+        beacon15.setX(670);
+        beacon15.setY(320);
+
+        Button beacon16 = (Button)findViewById(R.id.beacon16);
+        beacon16.setX(720);
+        beacon16.setY(170);
+
+        Button beacon17 = (Button)findViewById(R.id.beacon17);
+        beacon17.setX(720);
+        beacon17.setY(275);
+
+        Button beacon18 = (Button)findViewById(R.id.beacon18);
+        beacon18.setX(720);
+        beacon18.setY(410);
+
+        Button beacon19 = (Button)findViewById(R.id.beacon19);
+        beacon19.setX(780);
+        beacon19.setY(385);
+
+        Button beacon20 = (Button)findViewById(R.id.beacon20);
+        beacon20.setX(840);
+        beacon20.setY(410);
 
         //init();
 
@@ -120,6 +288,29 @@ public class MainActivity extends AppCompatActivity {
     public static double getDistance(int x1, int y1, int x2, int y2) {
         double d = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
         return d;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SystemRequirementsChecker.checkWithDefaultDialogs(this);
+
+        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
+            @Override
+            public void onServiceReady() {
+                beaconManager.startRanging(region);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        beaconManager.stopRanging(region);
+
+
+        super.onPause();
     }
 
     //Method to change screens when a button is clicked
