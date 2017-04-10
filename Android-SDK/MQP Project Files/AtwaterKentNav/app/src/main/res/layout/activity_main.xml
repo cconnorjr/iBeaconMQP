@@ -150,7 +150,16 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:backgroundTint="@android:color/holo_red_dark" />
 
-    <com.ibeaconmqp.atwaterkentnav.TouchImageView
+    <!--<com.ibeaconmqp.atwaterkentnav.TouchImageView
+        android:id="@+id/map"
+        android:src="@drawable/akmap"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />-->
+
+    <ImageView
         android:id="@+id/map"
         android:src="@drawable/akmap"
         android:layout_width="match_parent"
@@ -171,6 +180,12 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/map" />
 
+    <TextView
+        android:id="@+id/testy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
     <Button
         android:id="@+id/userLocation"
         android:layout_width="20dp"
@@ -178,12 +193,11 @@
         android:backgroundTint="@android:color/holo_blue_dark"
         style="@style/Widget.AppCompat.Button.Small" />
 
-    <TextView
+    <Button
+        android:id="@+id/switchScreen"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/distances"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_height="50dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="Professor Info"/>
 
 </RelativeLayout>
