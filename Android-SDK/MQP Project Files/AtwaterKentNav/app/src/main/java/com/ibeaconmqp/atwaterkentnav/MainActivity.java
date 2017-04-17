@@ -1,6 +1,5 @@
 package com.ibeaconmqp.atwaterkentnav;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -111,13 +110,9 @@ public class MainActivity extends AppCompatActivity {
                     LMSBeacon beacon4 = new LMSBeacon(-40, -23);//Set this as candy2 with major 12070
                     LMSBeacon beacon5 = new LMSBeacon(-30, -30);//Set this as beetroot2 with 53500
                     LMSBeacon beacon6 = new LMSBeacon(-37, -15);//Set this as lemon2 with 34226
-                    /*LMSBeacon beacon7 = new LMSBeacon(-53, -28);//Set this as candy3 with major 11911
+                    LMSBeacon beacon7 = new LMSBeacon(-53, -28);//Set this as candy3 with major 11911
                     LMSBeacon beacon8 = new LMSBeacon(-60, -30);//Set this as beetroot3 with 48542
-                    LMSBeacon beacon9 = new LMSBeacon(-45, -30);//Set this as lemon3 with 22098*/
-                    LMSBeacon beacon7 = new LMSBeacon(-15, 0);//Set this as candy3 with major 11911
-                    LMSBeacon beacon8 = new LMSBeacon(-22, -3);//Set this as beetroot3 with 48542
-                    LMSBeacon beacon9 = new LMSBeacon(-30, 0);//Set this as lemon3 with 22098
-
+                    LMSBeacon beacon9 = new LMSBeacon(-45, -30);//Set this as lemon3 with 22098
 
                     //array of LMSBeacon objects
 
@@ -248,9 +243,12 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
+                        //Creates a UserPosition to convert map coordinates to a position on map
+                        UserPosition position = new UserPosition((int)abs(matStation.get(0,0)),(int)abs(matStation.get(0,1)));
+
                         userLocation = (Button)findViewById(R.id.userLocation);
-                        userLocation.setX((int)abs(matStation.get(0,0)));
-                        userLocation.setY((int)abs(matStation.get(0,1)));
+                        userLocation.setX(position.getXpos());
+                        userLocation.setY(position.getYpos());
 
                         TextView distance = (TextView)findViewById(R.id.math);
                         distance.setText(Double.toString(matStation.get(0,0)) + " ,  " +
@@ -374,6 +372,26 @@ public class MainActivity extends AppCompatActivity {
 
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
 
+        //Button to toggle notifications
+        final Button notifsOff = (Button)findViewById(R.id.notifsOff);
+        notifsOff.setX(500);
+        notifsOff.setY(1200);
+        notifsOff.setBackgroundColor(0xFFFF0000);
+        notifsOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                beaconNotificationsEnabled = !beaconNotificationsEnabled;
+                if(beaconNotificationsEnabled){
+                    notifsOff.setText("Notifications Off");
+                    notifsOff.setBackgroundColor(0xFFFF0000);
+                }
+                else {
+                    notifsOff.setText("Notifications On");
+                    notifsOff.setBackgroundColor(0xFF00FF00);
+                }
+            }
+        });
+
         if (!isBeaconNotificationsEnabled()) {
             Log.d(TAG, "Enabling beacon notifications");
             enableBeaconNotifications();
@@ -387,6 +405,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*LMSBeacon beacon1 = new LMSBeacon(-45, 0);//Set this as candy with major 20303
+    LMSBeacon beacon2 = new LMSBeacon(-40, -8);//Set this as beetroot with 8897
+    LMSBeacon beacon3 = new LMSBeacon(-30, 0);//Set this as lemon with 61665
+    LMSBeacon beacon4 = new LMSBeacon(-40, -23);//Set this as candy2 with major 12070
+    LMSBeacon beacon5 = new LMSBeacon(-30, -30);//Set this as beetroot2 with 53500
+    LMSBeacon beacon6 = new LMSBeacon(-37, -15);//Set this as lemon2 with 34226
+    LMSBeacon beacon7 = new LMSBeacon(-53, -28);//Set this as candy3 with major 11911
+    LMSBeacon beacon8 = new LMSBeacon(-60, -30);//Set this as beetroot3 with 48542
+    LMSBeacon beacon9 = new LMSBeacon(-45, -30);//Set this as lemon3 with 22098*/
     @Override
     protected void onPause() {
         beaconManager.stopRanging(region);
@@ -394,15 +421,15 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    //Creates android notifications when the user enters the range of beacons
     public void enableBeaconNotifications() {
         if (beaconNotificationsEnabled) { return; }
 
         BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
-        beaconNotificationsManager.addNotification(
-                // TODO: replace with UUID, major and minor of your own beacon
-                new BeaconID("6EE4D6A9-DD8E-550E-FF81-783E445F9C5B", 11911, 37640),
-                "Entered range of candy3",
-                "Left range of candy3");
+        beaconNotificationsManager.addNotification(//Beetroot 3
+                new BeaconID("6EE4D6A9-DD8E-550E-FF81-783E445F9C5B",48542,60126),
+                "Room 320 is the CWINS lab",
+                null);
         beaconNotificationsManager.startMonitoring();
 
         beaconNotificationsEnabled = true;

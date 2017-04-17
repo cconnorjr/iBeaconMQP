@@ -200,4 +200,10 @@
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Professor Info"/>
 
+    <Button
+        android:id="@+id/notifsOff"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Notifications Off"/>
+
 </RelativeLayout>
