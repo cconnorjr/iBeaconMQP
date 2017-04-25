@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         beacons[0] = beacon2;
                     else if(firstMajor== 61665)
                         beacons[0] = beacon3;
-                    if(firstMajor== 12070) {
+                    else if(firstMajor== 12070) {
                         beacons[0] = beacon4;
                     }
                     else if(firstMajor== 53500) {
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     else if(firstMajor== 34226) {
                         beacons[0] = beacon6;
                     }
-                    if(firstMajor== 11911) {
+                    else if(firstMajor== 11911) {
                         beacons[0] = beacon7;
                     }
                     else if(firstMajor== 48542) {
@@ -154,13 +154,13 @@ public class MainActivity extends AppCompatActivity {
                         beacons[1] = beacon2;
                     else if(secondMajor == 61665)
                         beacons[1] = beacon3;
-                    if(secondMajor == 12070)
+                    else if(secondMajor == 12070)
                         beacons[1] = beacon4;
                     else if(secondMajor == 53500)
                         beacons[1] = beacon5;
                     else if(secondMajor == 34226)
                         beacons[1] = beacon6;
-                    if(secondMajor== 11911)
+                    else if(secondMajor== 11911)
                         beacons[1] = beacon7;
                     else if(secondMajor== 48542)
                         beacons[1] = beacon8;
@@ -176,13 +176,13 @@ public class MainActivity extends AppCompatActivity {
                         beacons[2] = beacon2;
                     else if(thirdMajor== 61665)
                         beacons[2] = beacon3;
-                    if(thirdMajor == 12070)
+                    else if(thirdMajor == 12070)
                         beacons[2] = beacon4;
                     else if(thirdMajor== 53500)
                         beacons[2] = beacon5;
                     else if(thirdMajor== 34226)
                         beacons[2] = beacon6;
-                    if(thirdMajor== 11911)
+                    else if(thirdMajor== 11911)
                         beacons[2] = beacon7;
                     else if(thirdMajor== 48542)
                         beacons[2] = beacon8;
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                         }
-
+                    //*******************End LMS Functionality*******************************************
                         //Creates a UserPosition to convert map coordinates to a position on map
                         UserPosition position = new UserPosition((int)abs(matStation.get(0,0)),(int)abs(matStation.get(0,1)));
 
@@ -250,10 +250,12 @@ public class MainActivity extends AppCompatActivity {
                         userLocation.setX(position.getXpos());
                         userLocation.setY(position.getYpos());
 
+                        //Displays the coordinates given by algorithm
                         TextView distance = (TextView)findViewById(R.id.math);
                         distance.setText(Double.toString(matStation.get(0,0)) + " ,  " +
                                 Double.toString(matStation.get(0,1)));
 
+                    //Displays the majors of three closest beacons, as well as the distance to them
                     text = (Integer.toString(firstMajor)+ ": " + Double.toString((double)Math.round(distance1 * 100d) / 100d)+ ", \n" +
                             Integer.toString(secondMajor)+ ": " +Double.toString((double)Math.round(distance2 * 100d) / 100d)+ ", \n" +
                             Integer.toString(thirdMajor)+ ": " +Double.toString((double)Math.round(distance3 * 100d) / 100d));
@@ -366,6 +368,7 @@ public class MainActivity extends AppCompatActivity {
         return d;
     }
 
+    //Notification toggling code is included in here
     @Override
     protected void onResume() {
         super.onResume();
@@ -405,15 +408,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*LMSBeacon beacon1 = new LMSBeacon(-45, 0);//Set this as candy with major 20303
-    LMSBeacon beacon2 = new LMSBeacon(-40, -8);//Set this as beetroot with 8897
-    LMSBeacon beacon3 = new LMSBeacon(-30, 0);//Set this as lemon with 61665
-    LMSBeacon beacon4 = new LMSBeacon(-40, -23);//Set this as candy2 with major 12070
-    LMSBeacon beacon5 = new LMSBeacon(-30, -30);//Set this as beetroot2 with 53500
-    LMSBeacon beacon6 = new LMSBeacon(-37, -15);//Set this as lemon2 with 34226
-    LMSBeacon beacon7 = new LMSBeacon(-53, -28);//Set this as candy3 with major 11911
-    LMSBeacon beacon8 = new LMSBeacon(-60, -30);//Set this as beetroot3 with 48542
-    LMSBeacon beacon9 = new LMSBeacon(-45, -30);//Set this as lemon3 with 22098*/
     @Override
     protected void onPause() {
         beaconManager.stopRanging(region);

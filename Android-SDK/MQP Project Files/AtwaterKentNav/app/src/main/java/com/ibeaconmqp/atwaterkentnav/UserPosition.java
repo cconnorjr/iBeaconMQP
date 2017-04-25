@@ -29,7 +29,7 @@ public class UserPosition {
     //Takes the x postion from the LMS and converts it to a pixel location
     private int convertXpos(int x){
         if(x>0 && x<80)
-            return 400-(10*x);
+            return 800-(10*x);
         else
             return 0;
     }
@@ -37,7 +37,7 @@ public class UserPosition {
     //Takes the Y position from the LMS and converts it to a pixel location
     private int convertYpos(int y){
         if(y>0 && y<80)
-            return 100+(10*y);
+            return 800-(10*y);
         else
             return 0;
     }
