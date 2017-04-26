@@ -9,11 +9,11 @@ import android.widget.Button;
 public class ProfessorTableActivity extends AppCompatActivity {
 
 
-    private Button but1;
+    private Button mapScreen;
 
     private void init(){
-        but1 = (Button)findViewById(R.id.but1);
-        but1.setOnClickListener(new View.OnClickListener() {
+        mapScreen = (Button)findViewById(R.id.mapScreen);
+        mapScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent nextScreen = new Intent(ProfessorTableActivity.this, MainActivity.class);

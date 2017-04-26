@@ -1,19 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ibeaconmqp.atwaterkentnav.MainActivity">
 
-    <com.ibeaconmqp.atwaterkentnav.MapView
+
+    <Button
+        android:id="@+id/beacon1"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon2"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon3"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+
+    <Button
+        android:id="@+id/beacon4"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+
+    <Button
+        android:id="@+id/beacon5"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon6"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon7"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+
+    <Button
+        android:id="@+id/beacon8"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon9"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon10"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon11"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon12"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon13"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon14"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon15"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon16"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon17"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon18"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon19"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/beacon20"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <!--<com.ibeaconmqp.atwaterkentnav.TouchImageView
         android:id="@+id/map"
+        android:src="@drawable/akmap"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />-->
+
+    <ImageView
+        android:id="@+id/map"
+        android:src="@drawable/akmap"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:id="@+id/math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/map" />
+
+    <TextView
+        android:id="@+id/testy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/userLocation"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        style="@style/Widget.AppCompat.Button.Small" />
+
+    <Button
+        android:id="@+id/switchScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="Professor Info"/>
+
+    <Button
+        android:id="@+id/notifsOff"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Notifications Off"/>
 
 </RelativeLayout>

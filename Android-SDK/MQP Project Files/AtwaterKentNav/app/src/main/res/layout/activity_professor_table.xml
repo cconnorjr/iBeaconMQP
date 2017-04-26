@@ -31,6 +31,315 @@
             android:textSize="15sp"/>
     </TableRow>
 
+    <!--Room 301-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/r_james_duckworth"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_301"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_rjduck"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 302-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/berk_sunar"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_302"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_sunar"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 303-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/xinming_huang"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_303"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_xhuang"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 304-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/edward_clancy"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_304"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_ted"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 305-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/john_mcneill"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_305"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_mcneill"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 306-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/sergey_makarov"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_306"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_makarov"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 307-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/thomas_eisenbarth"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_307"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_teisenbarth"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 308-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/kaveh_pahlavan"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_308"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_kaveh"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 309-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/jahangir_rahman"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_309"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_jrahman"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 310-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/shamsur_mazumder"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_310"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/https_www_wpi_edu_people_faculty_srmazumder"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 311-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/faculty_conference_room"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_311"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/http_spinlab_wpi_edu"
+            android:autoLink="web"
+            android:textSize="8sp"/>
+    </TableRow>
+
+    <!--Room 312-->
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -54,11 +363,11 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:text="@string/https_www_wpi_edu_people_faculty_sjbitar"
+            android:autoLink="web"
             android:textSize="8sp"/>
-
-
     </TableRow>
 
+    <!--Room 313-->
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -82,13 +391,40 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:text="@string/https_www_wpi_edu_people_faculty_drb"
+            android:autoLink="web"
             android:textSize="8sp"/>
+    </TableRow>
 
+    <!--Room 314-->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/signal_processing_and_ninformation_networking_nlaboratory_spinlab"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/_314"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/http_spinlab_wpi_edu"
+            android:autoLink="web"
+            android:textSize="8sp"/>
     </TableRow>
 
     <Button
-        android:id="@+id/but1"
+        android:id="@+id/mapScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Map Screen"
